@@ -3,6 +3,8 @@ from item.models import Category, Item
 from django.http import HttpResponse
 from django.template import loader
 
+from .forms import SignupForm
+
 # Create your views here.
 
 def index(request):
@@ -25,4 +27,13 @@ def inde(request):
   context = {
     'items': items,   
   }
-  return HttpResponse(template.render(context, request))      
+  return HttpResponse(template.render(context, request))
+
+
+def signup (request):
+   form = SignupForm()
+
+   return render(request, 'core/signup.html',{
+      'form': form
+   })
+
